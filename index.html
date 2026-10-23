@@ -241,6 +241,23 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 @keyframes wave{50%{translate:0 -10px;rotate:8deg}}
 .hats .hat.spin{animation:hatspin .9s}
 @keyframes hatspin{40%{transform:translateY(-28px) rotate(360deg) scale(1.25)}to{transform:rotate(720deg)}}
+
+@media screen and (max-width: 600px) {
+  footer .wrap{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+   footer .wrap ul li{
+    text-align: center;
+   }
+
+   footer .wrap ul{
+    padding-inline-start: 0px;
+   }
+}
 </style>
 </head>
 <body>
@@ -381,7 +398,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <footer>
   <div class="wrap">
     <span>Aquelarre · 2026</span>
-    <a href="https://instagram.com/aquelarre.unm" target="_blank" rel="noopener">@aquelarre.unm</a>
+    <ul style="list-style: none; text-align: start;">
+      <li><a href="https://instagram.com/aquelarre.unm" target="_blank" rel="noopener">@aquelarre.unm</a></li>
+      <li><a>contacto.aquelarre.unm@gmail.com</a></li>
+    </ul>
   </div>
 </footer>
 
@@ -422,12 +442,32 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
   // cartas
   var cards=[
-    ['good','Pies encantados','Ocupa 2 espacios en tu mano. Mientras la tengas, puedes tirar 1 dado extra por turno y elegir entre los resultados. Debes mostrar la carta siempre.'],
+    ['good','Telequinesis','Robas una llave a elección del jugador más cercano, (si es empate, lo eliges).'],
+    ['good','Suerte pasajera','Repites 2 veces tu tirada de dado. Eliges el resultado que quieras.'],
+    ['good','Esfera embrujada','Durante el turno de otro jugador que haya tirado un dado, ese jugador repite su tirada. Debe quedarse con ese resultado.'],
     ['good','Conjuro codicioso','Descarta una carta. Roba 2 cartas de Buena Suerte.'],
-    ['good','Maldición','Descarta toda tu mano. Elige un jugador: debe robar 2 cartas de Mala Suerte. No debes haber jugado cartas en este turno.'],
-    ['bad','Bolsillo roto','Se te cae tu mano completa. El jugador de atrás puede quedarse con las cartas caídas que desee.'],
+    ['good','Maldición','Descarta toda tu mano. Selecciona un jugador: aquel debe robar 2 cartas de Mala Suerte. (No debes haber jugado cartas en este mismo turno).'],
+    ['good','Regresión al pasado','Regresa 6 casillas detrás. Si perdiste una llave durante la ronda anterior, o te la robaron, la recuperas.'],
+    ['good','Vuelo en escoba','Si estas a 5 casillas o menos de una llave, vuelas a esa casilla y obtienes la llave.'],
+    ['good','Pies encantados','Ocupa 2 espacios en tu mano. Mientras tengas esta carta, puedes tirar 1 dado extra por turno y elegir entre los resultados. Debes mostrar esta carta siempre.'],
+    ['good','Clarividencia','Mira la mano de un jugador de tu elección. Selecciona una carta para robar.'],
+    ['good','Mal augurio','Elige 1 entre las primeras 3 cartas de Mala Suerte. Un jugador escogido sacude el dado: si sale impar, robará esa carta; si sale par, no pasa nada.'],
+    ['good','Traslación','Selecciona a otro jugador. Ambos deberán intercambiar sus posiciones.'],
+    ['good','Escudo mágico','Cuando recibes alguna clase de efecto negativo, descartas esta carta y niega el efecto.'],
+    ['good','Agujero negro','Posees 5 espacios en tu mano en lugar de 3. Debes mostrar constantemente esta carta.'],
+    ['bad','Tropiezo','Se te cae la última llave que obtuviste en tu actual casilla. El siguiente jugador que pase o caiga en esa casilla, puede obtener la llave.'],
     ['bad','Congelamiento','No puedes jugar en el siguiente turno.'],
-    ['bad','Sobrecarga','Al robarla, la guardas en la mano. Solo se descarta con efectos de cartas de Buena Suerte.']
+    ['bad','Bolsillo roto','Se te cae tu mano completa. El jugador de atrás puede obtener las cartas caídas que desee.'],
+    ['bad','Mentira blanca','Di 2 verdades y 1 mentira y elige a un jugador. Si adivina cuál es la mentira, descartas una carta de tu mano.'],
+    ['bad','Muñeco vudú','La siguiente carta de Mala Suerte que robe otro jugador la recibes tú en su lugar. Devuelves esta carta una vez que suceda.'],
+    ['bad','Sobrecarga','Al robarla, la guardas en tu mano. Esta carta solo puede ser descartada por efectos de cartas de Buena Suerte.'],
+    ['bad','Mal de lengua','Por los siguientes 2 turnos enteros, cambia las vocales de todas las palabras que digas por E’s. Si no se cumple, pierdes el siguiente turno.'],
+    ['bad','Transfiguración','Todas las cartas de tu mano se intercambian por las primeras 3 cartas de Mala Suerte del mazo.'],
+    ['bad','Bolsillo diminuto','El límite de tu mano se reduce a 2 hasta que se gire el tablero. Deberás devolver al mazo tus cartas sobrantes.'],
+    ['bad','Permutación','Tus llaves se intercambian con las del jugador con menor cantidad de llaves. Si eres tú, no tiene efecto.'],
+    ['bad','Magia agotada','No puedes jugar cartas hasta finalizar el siguiente turno.'],
+    ['bad','Danza de la muerte','Todos danzarán al rededor del juego por 30 segundos. Al finalizar el temporizador, robarán las cartas más cercanas.'],
+    ['bad','Espejo maldito','Elige a otro jugador para que sea tu reflejo maldito. Durante la siguiente ronda, cada movimiento o acción que hagas en el juego, él lo repetirá.']
   ];
   var box=document.getElementById('cards');
   function draw(f){
